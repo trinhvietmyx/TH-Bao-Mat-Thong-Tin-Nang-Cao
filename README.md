@@ -54,13 +54,3 @@ Xây dựng chương trình quản lý sinh viên hoàn chỉnh với các tính
 - `ex05_01.py`: Liệt kê hoán vị của danh sách bằng `itertools`.
 - `ex05_02.py`: Tách số từ chuỗi và tính tổng số âm/dương.
 
-## Cách chạy chương trình
-Để chạy các bài tập, bạn cần cài đặt Python (phiên bản 3.x).
-Mở terminal/cmd và di chuyển đến thư mục chứa file cần chạy, sau đó gõ:
-```bash
-python <tên_file>.py
-```
-Ví dụ:
-```bash
-python ex02_01.py
-```
