@@ -5,10 +5,6 @@
 - **MSSV:** 2380601382
 - **Lớp:** 23DTHA3
 
-## Nội dung Lab 01
-
-Lab 01 bao gồm các bài tập làm quen với ngôn ngữ lập trình Python, từ cơ bản đến nâng cao.
-
 ### 1. Bài tập cơ bản (`ex02`)
 Tập trung vào các kiến thức nền tảng về cú pháp và cấu trúc điều khiển:
 
