@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}{{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="workspace">
+    <h2>{{ config.title }}</h2>
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="section-title">Encryption</div>
+            <form method="POST" action="{{ url_for('cipher_encrypt', cipher_name=cipher_name) }}">
+                <div class="form-group">
+                    <label for="inputPlainText">Plain text</label>
+                    <input type="text" class="form-control" id="inputPlainText" name="inputPlainText"
+                           placeholder="{{ config.plain_sample }}" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="inputKeyPlain">Key</label>
+                    <input type="{{ config.key_type }}" class="form-control" id="inputKeyPlain" name="inputKeyPlain"
+                           placeholder="{{ config.key_sample }}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Encrypt</button>
+            </form>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="section-title">Decryption</div>
+            <form method="POST" action="{{ url_for('cipher_decrypt', cipher_name=cipher_name) }}">
+                <div class="form-group">
+                    <label for="inputCipherText">Cipher text</label>
+                    <input type="text" class="form-control" id="inputCipherText" name="inputCipherText"
+                           placeholder="{{ config.cipher_sample }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputKeyCipher">Key</label>
+                    <input type="{{ config.key_type }}" class="form-control" id="inputKeyCipher" name="inputKeyCipher"
+                           placeholder="{{ config.key_sample }}" required>
+                </div>
+                <button type="submit" class="btn btn-success">Decrypt</button>
+            </form>
+        </div>
+    </div>
+
+    {% if result %}
+        <div class="result-box">
+            <strong>{{ result.mode }}</strong><br>
+            {{ result.input_label }}: {{ result.text }}<br>
+            Key: {{ result.key }}<br>
+            {{ result.output_label }}: <strong>{{ result.output }}</strong>
+
+            {% if result.matrix %}
+                <table class="matrix" aria-label="Playfair matrix">
+                    {% for row in result.matrix %}
+                        <tr>
+                            {% for letter in row %}
+                                <td>{{ letter }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
